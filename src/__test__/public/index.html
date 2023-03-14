@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            body{
+                display: flex;
+                flex-wrap: wrap;
+            }
+            form{
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                width: 45%;
+                margin: 2.5rem auto;
+            }
+        </style>
+    </head>
+    <body>
+
+        <form action="/save" enctype="multipart/form-data" method="post">
+            <h2>Salvar</h2>
+            <input type="text" placeholder="nome" name="nome">
+            <input type="text" placeholder="id" name="id">
+            <input type="file" placeholder="foto" name="foto">
+            <button type="submit">Salvar</button>
+        </form>
+
+        <form action="/search" enctype="application/x-www-form-urlencoded" method="post">
+            <h2>Pesquisar um</h2>
+            <input type="text" name="id" placeholder="id">
+            <button type="submit">Pesquisar</button>
+        </form>
+        <form action="/search" enctype="application/x-www-form-urlencoded" method="post">
+            <h2>Pesquisar vários</h2>
+            <input type="number" min="0" name="limite" placeholder="Limite">
+            <input type="number" min="0" name="pular" placeholder="pular">
+            <button type="submit">Pesquisar</button>
+        </form>
+        <form action="/search" enctype="application/x-www-form-urlencoded" method="post">
+            <h2>Deletar um</h2>
+            <input type="text" name="id" placeholder="id">
+            <button type="submit">Deletar</button>
+        </form>
+    </body>
+</html>

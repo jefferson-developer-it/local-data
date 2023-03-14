@@ -1,0 +1,33 @@
+{
+   "info": {
+      "name": "teste",
+      "path": "C:\\Users\\Jefferson\\Desktop\\local-data\\src\\__test__/database/teste/col-teste.json"
+   },
+   "data": [
+      {
+         "nome": "teste",
+         "id": "91",
+         "foto": "C:\\Users\\Jefferson\\Desktop\\uploadImage"
+      },
+      {
+         "nome": "teste",
+         "id": "12",
+         "foto": "C:\\Users\\Jefferson\\Desktop\\uploadImage"
+      },
+      {
+         "nome": "teste",
+         "id": "21",
+         "foto": "C:\\Users\\Jefferson\\Desktop\\uploadImage"
+      },
+      {
+         "nome": "teste",
+         "id": "21",
+         "foto": "C:\\Users\\Jefferson\\Desktop\\uploadImage"
+      },
+      {
+         "nome": "teste",
+         "id": "22",
+         "foto": "C:\\Users\\Jefferson\\Desktop\\uploadImage"
+      }
+   ]
+}
