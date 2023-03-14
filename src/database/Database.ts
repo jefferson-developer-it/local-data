@@ -1,6 +1,6 @@
 import { ExistFolder } from "../upload/Read";
 import { newFolder } from "../upload/SaveAt";
-import { Collection, DataBase } from "../utils/interface";
+import { BaseDataCol, Collection, DataBase } from "../utils/interface";
 import CollectionDb from "./Collection";
 
 export default class Database implements DataBase{
@@ -27,8 +27,8 @@ export default class Database implements DataBase{
         })
     }
 
-    createCollection(name: string){
-        const collection = new CollectionDb(name, `${this.path}/${this.name}`);
+    createCollection<typeData extends BaseDataCol=any>(name: string){
+        const collection = new CollectionDb<typeData>(name, `${this.path}/${this.name}`);
 
         this.cols[name] = collection;
 

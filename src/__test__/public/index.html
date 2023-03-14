@@ -29,18 +29,19 @@
             <button type="submit">Salvar</button>
         </form>
 
-        <form action="/search" enctype="application/x-www-form-urlencoded" method="post">
+        <form action="/searchOne" enctype="application/x-www-form-urlencoded" method="post">
             <h2>Pesquisar um</h2>
             <input type="text" name="id" placeholder="id">
             <button type="submit">Pesquisar</button>
         </form>
-        <form action="/search" enctype="application/x-www-form-urlencoded" method="post">
+        <form action="/searchMany" enctype="application/x-www-form-urlencoded" method="post">
             <h2>Pesquisar vários</h2>
+            <input type="text" placeholder="nome" name="nome">
             <input type="number" min="0" name="limite" placeholder="Limite">
             <input type="number" min="0" name="pular" placeholder="pular">
             <button type="submit">Pesquisar</button>
         </form>
-        <form action="/search" enctype="application/x-www-form-urlencoded" method="post">
+        <form action="/deleteOne" enctype="application/x-www-form-urlencoded" method="post">
             <h2>Deletar um</h2>
             <input type="text" name="id" placeholder="id">
             <button type="submit">Deletar</button>

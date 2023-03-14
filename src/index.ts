@@ -6,7 +6,8 @@ import CollectionDb from "./database/Collection";
 import { BodyParser } from "./utils/bodyParser";
 import { setTempPath } from "./utils/temp";
 
-const Upload = {
+
+const FileManager = {
     File: FileData,
     CopyBase64,
     saveFile,
@@ -17,7 +18,7 @@ const Upload = {
 
 
 export default {
-    Upload,
+    FileManager,
     Database,
     CollectionDb,
     BodyParser,

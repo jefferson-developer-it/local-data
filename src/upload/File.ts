@@ -29,6 +29,8 @@ export default class FileData implements FileDataBase{
                 this.data, 
                 type || "base64"
             )
+
+        return `${this.uploadFolder}/${ filename || this.filenameOriginal as string}`
     }
 
     SetFolder(uploadFolder: string){

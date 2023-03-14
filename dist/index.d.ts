@@ -41,11 +41,47 @@ declare namespace LCL {
         SetFolder(uploadFolder: string): void
     }
 
-    interface CollectionDb extends Collection{
+    type ColProjection<T = ObjAny> = {
+        [K in keyof T]?: boolean | Projection
+    }
+    
+    interface Projection{
+        maxLength?: number,
+        split?: string,
+        join?: string,
+        includes?: string | string[]
+    }
+    
+    interface OptionsFind<typeProjection=ObjAny> {
+        projection?: ColProjection<typeProjection>,
+        limit?: number,
+        skip?: number,
+    }
+    
+    interface QueryDatabase {
+        [key: string]: string | number;
+    }
+
+    
+    interface BaseDataCol{
+        _id?: string,
+        save?: ()=>boolean
+        delete?: ()=>boolean
+    }
+
+
+    interface CollectionDb<typeData extends BaseDataCol = any> extends Collection{
         pathBase: string
         refresh(): void
-        insertOne(data: ObjAny): void
-        findOne(query: {[query: string]: any}): any
+        insertOne(data: typeData): void
+        insertMany(data: typeData[]): void
+        deleteMany(query: {[key: string]: any}): boolean
+        deleteOne(query: {[query: string]: any}): boolean
+        findOne(query: {[query: string]: any}, options?: OptionsFind<typeData>): typeData
+        find(query?: {[query: string]: any}, options?: OptionsFind<typeData>): typeData[]
+        updateOne(query: QueryDatabase, update: Partial<typeData>): boolean
+        validateQuery(item: ObjAny, query: QueryDatabase): boolean
+        Projection(data: typeData, projection: ColProjection<typeData>): typeData
     }
 
     interface Database extends DataBase{
@@ -53,7 +89,7 @@ declare namespace LCL {
     }
 
     interface LocalData{
-        Upload: {
+        FileManager: {
             File:  {
                 (file: File & {saveAt?: string}): FileData,
                 new (file: File & {saveAt?: string}): FileData,

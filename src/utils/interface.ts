@@ -26,3 +26,31 @@ export interface FileDataBase{
 export interface BodyParserParam{
     saveFileAt?: string
 }
+
+export interface BaseDataCol{
+    _id?: string,
+    save?: ()=>boolean
+    delete?: ()=>boolean
+}
+
+export type ColProjection<T = ObjAny> = {
+    [K in keyof T]?: boolean | Projection
+}
+
+export interface Projection{
+    maxLength?: number,
+    split?: string,
+    join?: string,
+    includes?: string | string[]
+}
+
+export interface OptionsFind<typeProjection=ObjAny> {
+    projection?: ColProjection<typeProjection>,
+    limit?: number,
+    skip?: number,
+}
+
+export interface QueryDatabase {
+    [key: string]: string | number;
+}
+  
