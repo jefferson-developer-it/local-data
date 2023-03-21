@@ -33,7 +33,7 @@ const Database_1 = __importDefault(require("./database/Database"));
 const Collection_1 = __importDefault(require("./database/Collection"));
 const bodyParser_1 = require("./utils/bodyParser");
 const temp_1 = require("./utils/temp");
-const Upload = {
+const FileManager = {
     File: File_1.default,
     CopyBase64: File_1.CopyBase64,
     saveFile: SaveAt_1.saveFile,
@@ -42,7 +42,7 @@ const Upload = {
     ReadFile: Read_1.default,
 };
 exports.default = {
-    Upload,
+    FileManager,
     Database: Database_1.default,
     CollectionDb: Collection_1.default,
     BodyParser: bodyParser_1.BodyParser,

@@ -6,7 +6,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Read_1 = require("../upload/Read");
 const SaveAt_1 = require("../upload/SaveAt");
 const Collection_1 = __importDefault(require("./Collection"));
+/**
+ * Class representing a database.
+ * @implements {DataBase}
+ */
 class Database {
+    /**
+     * Creates a new instance of the database.
+     *
+     * @param {string} name - The name of the database.
+     * @param {string} [path] - The optional path to the database. If not provided, it will use the default value set in the `path` property.
+     */
     constructor(name, path) {
         this.name = `default`;
         this.path = `${__dirname}/database`;
@@ -25,6 +35,17 @@ class Database {
             });
         });
     }
+    /**
+     * Creates a new collection in the database.
+     *
+     * @template typeData
+     * @param {string} name - The name of the collection to be created.
+     *
+     * @returns {CollectionDb<typeData>} The new collection created.
+     * @example
+     * const db = new Database('myDatabase');
+     * const usersCollection = db.createCollection('users');
+    */
     createCollection(name) {
         const collection = new Collection_1.default(name, `${this.path}/${this.name}`);
         this.cols[name] = collection;

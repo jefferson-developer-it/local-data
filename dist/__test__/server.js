@@ -1,14 +1,6 @@
 import express from "express";
 import path from "path"
 import sls from "../index"
-import { BaseDataCol } from "../utils/interface";
-
-interface dbTeste extends BaseDataCol {
-    nome: string| string[]
-    foto: string
-    id: string
-    lastRead?: number
-}
 
 const database = new sls.Database("teste", `${__dirname}/database`)
 
@@ -50,9 +42,9 @@ app.post("/searchOne",async (req, res) => {
     const data = TesteCol.findOne({id: req.body.id})
 
     if(data) {        
-        let html = sls.FileManager.ReadFile(`${__dirname}/public/oneData.html`, "utf8")as string
+        let html = sls.FileManager.ReadFile(`${__dirname}/public/oneData.html`, "utf8")
 
-        const foto = sls.FileManager.ReadFile(data.foto) as string;
+        const foto = sls.FileManager.ReadFile(data.foto) ;
 
         html = html?.replace(/\$foto/g, `data:image/${path.extname(data.foto)||"*"};base64,${foto}`)
         html = html?.replace(/\$nome/g, Array.isArray(data.nome)? data.nome?.join("."): data.nome)        

@@ -23,6 +23,24 @@ exports.BodyParser = void 0;
 const formidable_1 = require("formidable");
 const File_1 = __importDefault(require("../upload/File"));
 const json_1 = require("./json");
+/**
+ * Middleware function for Express that parses incoming request bodies and adds them to the `req.body` property.
+ * @param {{saveFileAt: string}} options - An object containing options for the middleware. The `saveFileAt` property specifies where uploaded files should be saved.
+ * @returns {(req: Request, _: Response, next: NextFunction) => void} A middleware function that can be used in an Express app.
+ *
+ * @example
+ * import express from 'express';
+ * import { BodyParser } from './BodyParser';
+ *
+ * const app = express();
+ *
+ * app.use(BodyParser({ saveFileAt: './uploads' }));
+ *
+ * app.post('/upload', (req, res) => {
+ *   console.log(req.body);
+ *   res.send('Upload successful!');
+ * });
+ */
 function BodyParser({ saveFileAt }) {
     return (req, _, next) => { var _a, req_1, req_1_1; return __awaiter(this, void 0, void 0, function* () {
         var _b, e_1, _c, _d;
@@ -38,7 +56,8 @@ function BodyParser({ saveFileAt }) {
                 for (const fileName of Object.keys(files)) {
                     filesObj[fileName] = new File_1.default(Object.assign(Object.assign({}, files[fileName]), { saveAt: saveFileAt || `${__dirname}/upload` }));
                 }
-                req.body = Object.assign(Object.assign({}, fields), filesObj);
+                req.body = Object.assign({}, fields);
+                req.files = Object.assign({}, filesObj);
                 next();
             });
         }
